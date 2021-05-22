@@ -31,7 +31,7 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Coming_Soon"
+        name="Coming Soon"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <MaterialIcons name='video-library' size={24} color={color} />,

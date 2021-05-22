@@ -10,7 +10,7 @@ export type RootStackParamList = {
 
 export type BottomTabParamList = {
   Home: undefined;
-  Coming_Soon: undefined;
+  "Coming Soon": undefined;
   Search: undefined;
   Downloads:undefined
 };
