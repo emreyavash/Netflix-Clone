@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text, View } from '../../components/Themed';
 import { Image, Pressable,FlatList} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
@@ -10,13 +10,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 const firstSeason = movie.seasons.items[0];
 const firstEpisode = firstSeason.episodes.items[0]
 const MovieDetailScreen = () => {
+    const [currentSeason,setCurrentSeason]= useState(firstSeason);
     const SeasonNames = movie.seasons.items.map(season=>season.name);
     return (
         <View >
            <Image style={styles.image} source={{uri:firstEpisode.poster}} />
            
             <FlatList 
-            data={firstSeason.episodes.items}
+            data={currentSeason.episodes.items}
             renderItem={({item})=> <EpisodeItem episode={item}/>}
             style={{marginBottom:250}}
             ListHeaderComponent={(
@@ -69,10 +70,12 @@ const MovieDetailScreen = () => {
                     </View>
                 </View>
                 <Picker
-                
-                onValueChange={(itemValue, itemIndex) =>
-                   {}
-                }>
+                selectedValue={currentSeason.name}
+                style={{color:'white',width:130,}}
+                dropdownIconColor='white'
+                onValueChange={(itemValue, itemIndex) =>{
+                    setCurrentSeason(movie.seasons.items[itemIndex])
+                }}>
                     {SeasonNames.map(SeasonName=>(
                         <Picker.Item label={SeasonName} value={SeasonName} key={SeasonName}/>
 
