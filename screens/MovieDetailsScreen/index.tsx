@@ -7,14 +7,16 @@ import movie from '../../assets/data/movie';
 import { MaterialIcons,Entypo,AntDesign,Feather,Ionicons  } from '@expo/vector-icons';
 import EpisodeItem from '../../components/EpisodeItem';
 import { ScrollView } from 'react-native-gesture-handler';
+import VideoPlayer from '../../components/VideoPlayer';
 const firstSeason = movie.seasons.items[0];
 const firstEpisode = firstSeason.episodes.items[0]
 const MovieDetailScreen = () => {
     const [currentSeason,setCurrentSeason]= useState(firstSeason);
+    const [currentEpisode,setCurrentEpisode]=useState(firstSeason.episodes.items[0]);
     const SeasonNames = movie.seasons.items.map(season=>season.name);
     return (
         <View >
-           <Image style={styles.image} source={{uri:firstEpisode.poster}} />
+          <VideoPlayer episode={currentEpisode}/>
            
             <FlatList 
             data={currentSeason.episodes.items}
