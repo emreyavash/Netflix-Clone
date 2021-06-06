@@ -12,7 +12,9 @@ const HomeScreen=()=> {
     <SafeAreaView style={styles.container}>
       <FlatList 
       data={categories.items}
-      renderItem={({item})=><HomeCategory category={item}/>}
+      renderItem={({item})=>
+      <HomeCategory category={item}/>
+    }
       />
     </SafeAreaView>
   );
